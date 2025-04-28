@@ -25,7 +25,17 @@
 ;;      doom-variable-pitch-font (font-spec :family "Fira Sans" :size 13))
 ;;
 
-( setq doom-font (font-spec :family "IBM Plex Mono" :size 14) )
+(when (display-graphic-p)
+  (toggle-frame-maximized)
+  (setq doom-font (font-spec :family "IBM Plex Mono" :size 14))
+  (setq doom-theme 'almost-mono-white)
+
+  (use-package almost-mono-themes)
+
+  (custom-theme-set-faces! '(almost-mono-cream almost-mono-white)
+    '(line-number :foreground "black")
+    '(line-number-current-line :foreground "black")))
+
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
 ;; up, `M-x eval-region' to execute elisp code, and 'M-x doom/reload-font' to
 ;; refresh your font settings. If Emacs still can't find your font, it likely
@@ -36,16 +46,23 @@
 ;; `load-theme' function. This is the default:
 ;; (setq doom-theme 'doom-one)
 
-( setq doom-theme  'doom-homage-white )
 
-;; This determines the style of line numbers in effect. If set to `nil', line
-;; numbers are disabled. For relative line numbers, set this to `relative'.
-(setq display-line-numbers-type t)
+(setq
 
-;; If you use `org' and don't want your org files in the default location below,
-;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/org/")
+ confirm-kill-emacs nil
 
+ ;; This determines the style of line numbers in effect. If set to `nil', line
+ ;; numbers are disabled. For relative line numbers, set this to `relative'.
+ display-line-numbers-type 'relative
+
+ ;; If you use `org' and don't want your org files in the default location below,
+ ;; change `org-directory'. It must be set before org loads!
+ org-directory "~/org/"
+
+  ;; When done with C-S display a counter
+ isearch-lazy-count 1
+
+ )
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.

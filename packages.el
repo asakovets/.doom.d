@@ -47,3 +47,6 @@
 ;; (unpin! pinned-package another-pinned-package)
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;; (unpin! t)
+
+(package! almost-mono-themes
+  :recipe (:host github :repo "asakovets/almost-mono-themes"))
