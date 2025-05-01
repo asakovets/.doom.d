@@ -99,3 +99,8 @@
 (after! lsp-clangd
   ;; disable parameter auto-completion when selecting a suggested function
   (cl-pushnew "--function-arg-placeholders=0"  lsp-clients-clangd-args))
+
+(after! corfu
+  (setq
+   corfu-preview-current t
+   corfu-auto nil))
